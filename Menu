@@ -1,0 +1,116 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Mobile%20Friendly%20Orion')))()
+local Player = game.Players.LocalPlayer
+  local Window = OrionLib:MakeWindow({
+		Name = "Chave Sistema",
+		HidePremium = false,
+		SaveConfig = true,
+		ConfigFolder = "OrionTest",
+        IntroText = "Key sistema"       
+})
+
+function MakeScriptHub()
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/LekSmink/Smink/main/MenuSmink"))()
+end
+
+OrionLib:MakeNotification({
+	Name = "Login da Senha",
+	Content = "Pegue sua key no Discord então pesquise no ytb Smink_Script e procure pelo link do Discord"..Player.Name..".",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+getgenv().Key = "Key_SminkHUD=146935d0"
+getgenv().KeyInput = "🔑"
+
+local Tab = Window:MakeTab({
+	Name = "Sistema de Key",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddTextbox({
+	Name = "Key sistema",
+	Default = "Coloque",
+	TextDisappear = true,
+	Callback = function(Value)
+		getgenv().KeyInput = Value
+	end	  
+})
+
+Tab:AddButton({
+    Name = "Checando Chave",
+    Callback = function()
+        if getgenv().KeyInput == getgenv().Key then
+            OrionLib:MakeNotification({
+                Name = "Checando Chave",
+                Content = "Key",
+                Image = "rbxassetid://4483345998",
+                Time = 5
+            })
+            wait(2)
+            OrionLib:MakeNotification({
+                Name = "Chave correta",
+                Content = "Sua chave esta correta... aproveite o script",
+                Image = "rbxassetid://4483345998",
+                Time = 5
+            })
+            wait(1)
+            OrionLib:Destroy()
+            wait(.3)
+            MakeScriptHub()
+        else
+           OrionLib:MakeNotification({
+                Name = "Login",
+                Content = "espere...",
+                Image = "rbxassetid://4483345998",
+                Time = 5
+            })
+            wait(2)
+            OrionLib:MakeNotification({
+                Name = "Chave incorreta!",
+                Content = "Se nao sabe ou esqueceu vai no meu Discord",
+                Image = "rbxassetid://4483345998",
+                Time = 5
+            })
+        end
+    end
+})
+
+local Section = Tab:AddSection({
+	Name = "Pegar a Key no Discord"
+})
+
+Tab:AddButton({
+	Name = "Copiar link da Chave",
+	Callback = function()
+      		setclipboard("https://discord.com/invite/t5AcYBW7")
+  	end    
+})
+
+local Tab1 = Window:MakeTab({
+	Name = "Discord",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Discord secundário"
+})
+
+Tab:AddButton({
+	Name = "Discord do Script(Secundário)",
+	Callback = function()
+      		setclipboard("https://discord.com/invite/t5AcYBW7")
+  	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Discord principal"
+})
+
+Tab:AddButton({
+	Name = "Discord do Script(Principal)",
+	Callback = function()
+      		setclipboard("https://discord.com/invite/jWNZd5AZ")
+  	end    
+})
